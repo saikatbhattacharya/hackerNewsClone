@@ -1,6 +1,3 @@
-import React from "react";
-import DataRow from "./DataRow";
-
 export const columns = [
   {
     Header: "Comments",
@@ -19,7 +16,3 @@ export const columns = [
     accessor: "news",
   },
 ];
-
-export const processData = (data) => {
-  return data.map((d) => DataRow(d));
-};

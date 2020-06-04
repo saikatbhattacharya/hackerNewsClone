@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { columns, processData } from "./utils";
 import Table from "./TableTemplate";
+import DataRow from "./DataRow";
 
 const TableWrapper = styled.div`
   padding: 1rem;
@@ -30,10 +31,13 @@ const TableWrapper = styled.div`
 `;
 
 const DataTable = (props) => {
-  const { data } = props;
+  const { data = [], upVote, hideData } = props;
   return (
     <TableWrapper>
-      <Table columns={columns} data={processData(data)} />
+      <Table
+        columns={columns}
+        data={data.map((d) => DataRow(d, upVote, hideData))}
+      />
     </TableWrapper>
   );
 };

@@ -12,3 +12,31 @@ export const getHackerNewsData = (pageNo = 1) => async (dispatch) => {
     });
   }
 };
+
+export const upVote = (d) => (dispatch, getState) => {
+  let { hackerNewsData } = getState().dashboardReducer;
+  let { hits = {} } = hackerNewsData;
+  hits = hits.map((each) =>
+    each.objectID === d.objectID ? { ...d, points: d.points + 1 } : each
+  );
+  hackerNewsData.hits = hits;
+  //call api from here
+
+  dispatch({
+    type: GET_HACKER_NEWS_DATA,
+    payload: { data: hackerNewsData },
+  });
+};
+
+export const hideData = (d) => (dispatch, getState) => {
+  let { hackerNewsData } = getState().dashboardReducer;
+  let { hits = {} } = hackerNewsData;
+  hits = hits.filter((each) => each.objectID !== d.objectID);
+  hackerNewsData.hits = hits;
+  //call api from here
+
+  dispatch({
+    type: GET_HACKER_NEWS_DATA,
+    payload: { data: hackerNewsData },
+  });
+};

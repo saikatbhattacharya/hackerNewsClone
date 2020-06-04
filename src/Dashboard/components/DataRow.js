@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ReactComponent as UpVote } from "../../Images/up-arrow.svg";
 
-const DataRow = (d) => {
-  const [singleData, setSingleData] = useState(d);
-  useEffect(() => {
-    setSingleData(d);
-  }, [d]);
-
-  const onUpVote = () => {
-    //call api from here
-    setSingleData({ ...singleData, points: singleData.points + 1 });
-  };
-
+const DataRow = (singleData, upVote, hideData) => {
   return {
     num_comments: singleData.num_comments,
     voteCount: singleData.points,
     upVote: (
       <UpVote
         style={{ width: 10, cursor: "pointer" }}
-        onClick={() => onUpVote()}
+        onClick={() => upVote(singleData)}
       />
     ),
-    news: <p>{singleData.title}</p>,
+    news: (
+      <div>
+        <p>{singleData.title}</p>
+        <button onClick={() => hideData(singleData)}>hide</button>
+      </div>
+    ),
   };
 };
 
