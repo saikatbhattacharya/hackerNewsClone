@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as dashboardActions from "./actions";
+import DataTable from "./components/DataTable";
 
 const Dashboard = (props) => {
-  const { hackerNewsData, getHackerNewsData } = props;
+  const { hackerNewsData = {}, getHackerNewsData } = props;
   useEffect(() => {
     getHackerNewsData();
   }, []);
   console.log(hackerNewsData);
-  return <div>Hi there!!</div>;
+  return <DataTable data={hackerNewsData.hits || []} />;
 };
 
 const mapStateToProps = ({ dashboardReducer }) => {
