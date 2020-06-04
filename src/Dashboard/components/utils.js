@@ -1,4 +1,5 @@
 import React from "react";
+import DataRow from "./DataRow";
 
 export const columns = [
   {
@@ -20,10 +21,5 @@ export const columns = [
 ];
 
 export const processData = (data) => {
-  return data.map((d) => ({
-    num_comments: d.num_comments,
-    voteCount: d.points,
-    upVote: <button>p</button>,
-    news: <p>{d.title}</p>,
-  }));
+  return data.map((d) => DataRow(d));
 };
