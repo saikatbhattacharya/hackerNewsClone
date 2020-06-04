@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-// import simpleReducer from "./simpleReducer";
+import dashboardReducer from "./Dashboard/reducer";
 export default combineReducers({
-  // simpleReducer
+  dashboardReducer,
 });

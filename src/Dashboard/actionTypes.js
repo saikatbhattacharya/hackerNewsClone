@@ -1,0 +1,1 @@
+export const GET_HACKER_NEWS_DATA = "GET_HACKER_NEWS_DATA";
