@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as dashboardActions from "./actions";
 import DataTable from "./components/DataTable";
-
+import Chart from "./components/Chart";
 const Dashboard = (props) => {
   const { hackerNewsData = {}, getHackerNewsData } = props;
 
@@ -10,7 +10,12 @@ const Dashboard = (props) => {
     getHackerNewsData();
   }, []);
 
-  return <DataTable data={hackerNewsData.hits} {...props} />;
+  return (
+    <div>
+      <DataTable data={hackerNewsData.hits} {...props} />;
+      <Chart data={hackerNewsData.hits} />
+    </div>
+  );
 };
 
 const mapStateToProps = ({ dashboardReducer }) => {
