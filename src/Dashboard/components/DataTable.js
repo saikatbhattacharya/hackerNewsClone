@@ -72,7 +72,7 @@ const DataTable = (props) => {
         ) : (
           <div>Previous</div>
         )}{" "}
-        |
+        |{" "}
         {page < nbPages ? (
           <Link to={`/?pageNo=${page + 1}`}>Next</Link>
         ) : (
