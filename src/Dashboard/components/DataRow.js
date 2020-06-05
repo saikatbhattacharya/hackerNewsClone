@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { ReactComponent as UpVote } from "../../Images/up-arrow.svg";
 
@@ -33,6 +34,13 @@ const DataRow = (singleData, upVote, hideData, page) => {
       </div>
     ),
   };
+};
+
+DataRow.propTypes = {
+  singleData: PropTypes.object,
+  upVote: PropTypes.func,
+  hideData: PropTypes.func,
+  page: PropTypes.number,
 };
 
 export default DataRow;

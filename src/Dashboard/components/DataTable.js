@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { columns } from "./utils";
 import Table from "./TableTemplate";
 import DataRow from "./DataRow";
@@ -81,6 +82,12 @@ const DataTable = (props) => {
       </BottomNav>
     </TableWrapper>
   );
+};
+
+DataTable.propTypes = {
+  hackerNewsData: PropTypes.object,
+  upVote: PropTypes.func,
+  hideData: PropTypes.func,
 };
 
 export default DataTable;

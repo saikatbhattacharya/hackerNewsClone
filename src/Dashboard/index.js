@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import queryString from "query-string";
 import * as dashboardActions from "./actions";
 import DataTable from "./components/DataTable";
 import Chart from "./components/Chart";
+
 const Dashboard = (props) => {
   const { hackerNewsData = {}, getHackerNewsData } = props;
   const { search } = useLocation();
@@ -15,13 +17,17 @@ const Dashboard = (props) => {
   }, [search]);
 
   return (
-    <div>
+    <>
       <DataTable {...props} />
       <Chart data={hackerNewsData.hits} />
-    </div>
+    </>
   );
 };
 
+Dashboard.propTypes = {
+  hackerNewsData: PropTypes.object,
+  getHackerNewsData: PropTypes.func,
+};
 const mapStateToProps = ({ dashboardReducer }) => {
   return { hackerNewsData: dashboardReducer.hackerNewsData || {} };
 };
