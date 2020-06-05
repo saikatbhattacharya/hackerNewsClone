@@ -58,7 +58,6 @@ const DataTable = (props) => {
     upVote,
     hideData,
     hackerNewsData: { hits = [], page = 1, nbPages = 1 },
-    getHackerNewsData,
   } = props;
 
   return (
