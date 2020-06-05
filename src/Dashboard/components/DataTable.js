@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { columns, processData } from "./utils";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { columns } from "./utils";
 import Table from "./TableTemplate";
 import DataRow from "./DataRow";
 
