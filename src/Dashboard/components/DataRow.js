@@ -1,5 +1,11 @@
 import React from "react";
+import styled from "styled-components";
 import { ReactComponent as UpVote } from "../../Images/up-arrow.svg";
+
+const NewsDiv = styled.div`
+  margin: 0 5px;
+  ${({ customStyle }) => customStyle}
+`;
 
 const DataRow = (singleData, upVote, hideData) => {
   return {
@@ -12,9 +18,18 @@ const DataRow = (singleData, upVote, hideData) => {
       />
     ),
     news: (
-      <div>
-        <p>{singleData.title}</p>
-        <button onClick={() => hideData(singleData)}>hide</button>
+      <div style={{ display: "flex" }}>
+        <NewsDiv>{singleData.title}</NewsDiv>
+        <NewsDiv>({singleData.url})</NewsDiv>
+        <NewsDiv>
+          by <span style={{ fontWeight: 500 }}>{singleData.author}</span>
+        </NewsDiv>
+        <NewsDiv
+          customStyle={"cursor: pointer;font-weight: 500;"}
+          onClick={() => hideData(singleData)}
+        >
+          [hide]
+        </NewsDiv>
       </div>
     ),
   };

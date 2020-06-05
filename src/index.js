@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -11,12 +10,10 @@ import configureStore from "./store";
 const render = () => {
   ReactDOM.render(
     // Wrap App inside AppContainer
-    <Provider store={configureStore().store}>
-      <PersistGate loading={null} persistor={configureStore().persistor}>
-        <AppContainer>
-          <App />
-        </AppContainer>
-      </PersistGate>
+    <Provider store={configureStore()}>
+      <AppContainer>
+        <App />
+      </AppContainer>
     </Provider>,
     document.getElementById("root")
   );

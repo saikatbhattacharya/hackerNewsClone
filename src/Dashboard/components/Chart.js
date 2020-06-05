@@ -26,7 +26,7 @@ const chartData = {
   ],
 };
 
-const Chart = ({ data }) => {
+const Chart = ({ data = [] }) => {
   chartData.labels = data.map((each) => each.objectID);
   chartData.datasets[0].data = data.map((each) => each.points);
   return (

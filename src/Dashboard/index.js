@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { useLocation } from "react-router";
+import queryString from "query-string";
 import * as dashboardActions from "./actions";
 import DataTable from "./components/DataTable";
 import Chart from "./components/Chart";
 const Dashboard = (props) => {
   const { hackerNewsData = {}, getHackerNewsData } = props;
+  const { search } = useLocation();
 
   useEffect(() => {
-    getHackerNewsData();
-  }, []);
+    const parsedQuery = queryString.parse(search) || {};
+    getHackerNewsData(parsedQuery.pageNo || 1);
+  }, [search]);
 
   return (
     <div>
-      <DataTable data={hackerNewsData.hits} {...props} />;
+      <DataTable {...props} />
       <Chart data={hackerNewsData.hits} />
     </div>
   );
