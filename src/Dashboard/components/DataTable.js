@@ -64,7 +64,7 @@ const DataTable = (props) => {
     <TableWrapper>
       <Table
         columns={columns}
-        data={hits.map((d) => DataRow(d, upVote, hideData))}
+        data={hits.map((d) => DataRow(d, upVote, hideData, page))}
       />
       <BottomNav>
         {page > 1 ? (

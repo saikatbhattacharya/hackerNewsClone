@@ -7,14 +7,14 @@ const NewsDiv = styled.div`
   ${({ customStyle }) => customStyle}
 `;
 
-const DataRow = (singleData, upVote, hideData) => {
+const DataRow = (singleData, upVote, hideData, page) => {
   return {
     num_comments: singleData.num_comments,
     voteCount: singleData.points,
     upVote: (
       <UpVote
         style={{ width: 10, cursor: "pointer" }}
-        onClick={() => upVote(singleData)}
+        onClick={() => upVote(singleData, page)}
       />
     ),
     news: (
@@ -26,7 +26,7 @@ const DataRow = (singleData, upVote, hideData) => {
         </NewsDiv>
         <NewsDiv
           customStyle={"cursor: pointer;font-weight: 500;"}
-          onClick={() => hideData(singleData)}
+          onClick={() => hideData(singleData, page)}
         >
           [hide]
         </NewsDiv>
