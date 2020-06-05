@@ -1,7 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Dashboard from "./Dashboard";
+
+const Dashboard = lazy(() => import("./Dashboard"));
 
 const history = createBrowserHistory();
 
@@ -10,7 +11,9 @@ export default function BasicExample() {
     <Router>
       <Switch>
         <Route path="/">
-          <Dashboard history={history} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard history={history} />
+          </Suspense>
         </Route>
       </Switch>
     </Router>
